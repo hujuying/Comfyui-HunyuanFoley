@@ -19,32 +19,44 @@ Install Python dependencies:
 pip install -r ComfyUI/custom_nodes/ComfyUI_HunyuanFoley/requirements.txt
 
 
-Windows portable install:
+Nodes Overview
 
-# run this from ComfyUI_windows_portable folder
-python_embeded\python.exe -m pip install -r ComfyUI\custom_nodes\ComfyUI_HunyuanFoley\requirements.txt
+Hunyuan Foley – File Picker
+Lets you select:
 
+main_model_pth → hunyuanvideo_foley.pth
 
-Minimal extras required by this node: imageio, imageio-ffmpeg, numpy.
-PyTorch & the rest come from ComfyUI and the bundled Hunyuan code.
+vae_pth → vae_128d_48k.pth
 
-Restart ComfyUI.
+synch_pth → synchformer_state_dict.pth
 
-Models
+config_yaml_path → Path to config.yaml (absolute path, or relative to your models folder; default config.yaml if it sits next to the weights)
 
-Place all HunyuanVideo-Foley weights and config.yaml in a single folder:
+Output: paths (internal dict of resolved file paths)
 
-ComfyUI/models/hunyuanFoley/HunyuanVideo-Foley/
-├─ hunyuanvideo_foley.pth
-├─ vae_128d_48k.pth
-├─ synchformer_state_dict.pth
-└─ config.yaml
+Hunyuan Foley – Model Loader
+Loads all models using the paths from File Picker.
+Outputs:
 
+model_dict (HUNYUAN_MODEL)
 
-Notes:
+cfg (HUNYUAN_CFG)
 
-The folder name can be hunyuanFoley or hunyuanfoley — this node accepts either.
+Hunyuan Foley – Sampler
+Generates audio from a video + prompt.
+Inputs:
 
-All four files must live together in the same directory.
+model_dict, cfg (from Model Loader)
 
-Get the files from the official HunyuanVideo-Foley release (Tencent/author distribution).
+prompt (text)
+
+guidance_scale, num_inference_steps, seed
+
+video_path or images (if images, the node encodes a temp MP4 automatically)
+
+output_layout:
+
+VHS → outputs shape (1, 1, T) for VHS_VideoCombine
+
+COMFY → outputs shape (1, T) for SaveAudio / PreviewAudio
+Output: audio
