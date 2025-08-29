@@ -1,5 +1,5 @@
 # ComfyUI_HunyuanFoley
-ComfyUI wrapper for **Tencent HunyuanVideo-Foley**.  
+ComfyUI wrapper for **Tencent HunyuanVideo-Foley**.  created by **[Ai study now](https://aistudynow.com/)**
 
 
 ---
