@@ -5,17 +5,6 @@ Outputs audio shaped for either **VHS_VideoCombine** or **Save/PreviewAudio**.
 
 ---
 
-## Installation
-
-### Clone into `custom_nodes`
-```bash
-# from your ComfyUI root
-git clone https://github.com/yourname/ComfyUI_HunyuanFoley ComfyUI/custom_nodes/ComfyUI_HunyuanFoley
-
-
-
-
-
 ## Models
 
 Get the files from the official release: **[HunyuanVideo-Foley on Hugging Face](https://huggingface.co/tencent/HunyuanVideo-Foley/tree/main)**
