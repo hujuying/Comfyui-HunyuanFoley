@@ -1,6 +1,3 @@
-# ComfyUI_HunyuanFoley/nodes.py
-# MMAudio-style nodes for Tencent HunyuanVideo-Foley
-
 import os, sys, tempfile
 from typing import Optional
 
@@ -11,18 +8,13 @@ import imageio
 import folder_paths
 import comfy.model_management as mm
 
-# Make bundled Hunyuan package importable (if you placed it under this folder)
 sys.path.insert(0, os.path.dirname(__file__))
 
-# Hunyuan internals (from your bundled package)
+
 from hunyuanvideo_foley.utils.model_utils import load_model, denoise_process
 from hunyuanvideo_foley.utils.feature_utils import feature_process
 
-# --------------------------------------------------------------------------------
-# Register BOTH names so the file picker works regardless of folder casing:
-#   models/hunyuanFoley  and  models/hunyuanfoley
-# We'll use "hunyuanFoley" as the primary key for UI dropdowns.
-# --------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 _models_root = folder_paths.models_dir
 _primary_key = "hunyuanFoley"
 _alt_key     = "hunyuanfoley"
@@ -43,9 +35,7 @@ else:
     _ensure_model_key(_primary_key, "hunyuanfoley")
     _ensure_model_key(_alt_key, "hunyuanfoley")
 
-# --------------------------------------------------------------------------------
-# Helpers
-# --------------------------------------------------------------------------------
+
 def _pick_device():
     return mm.get_torch_device()
 
@@ -85,10 +75,6 @@ def _resolve_from_key(selection: str) -> str:
         return folder_paths.get_full_path_or_raise(_primary_key, selection)
     except Exception:
         return folder_paths.get_full_path_or_raise(_alt_key, selection)
-
-# --------------------------------------------------------------------------------
-# Nodes
-# --------------------------------------------------------------------------------
 
 class HunyuanFoleyLoader:
     """
@@ -313,9 +299,7 @@ class HunyuanFoleySampler:
                 except Exception:
                     pass
 
-# --------------------------------------------------------------------------------
-# Registry
-# --------------------------------------------------------------------------------
+
 NODE_CLASS_MAPPINGS = {
     "HunyuanFoleyLoader":       HunyuanFoleyLoader,
     "HunyuanFoleyUtilsLoader":  HunyuanFoleyUtilsLoader,
@@ -327,3 +311,4 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "HunyuanFoleyUtilsLoader": "Hunyuan Foley - Model Loader",
     "HunyuanFoleySampler":     "Hunyuan Foley - Sampler",
 }
+
