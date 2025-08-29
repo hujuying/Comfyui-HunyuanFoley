@@ -7,6 +7,8 @@ Outputs audio shaped for either **VHS_VideoCombine** or **Save/PreviewAudio**.
 
 ## Models
 
+Get the files from the official release: **[HunyuanVideo-Foley on Hugging Face](https://huggingface.co/tencent/HunyuanVideo-Foley/tree/main)**
+
 Place all HunyuanVideo-Foley weights and `config.yaml` in one folder (either `hunyuanFoley` or `hunyuanfoley` is accepted):
 
 ```text
@@ -15,3 +17,4 @@ ComfyUI/models/hunyuanFoley/HunyuanVideo-Foley/
 ├─ vae_128d_48k.pth
 ├─ synchformer_state_dict.pth
 └─ config.yaml
+
