@@ -17,3 +17,4 @@ ComfyUI/models/hunyuanFoley/HunyuanVideo-Foley/
 ├─ synchformer_state_dict.pth
 └─ config.yaml
 
+# ComfyUI_HunyuanFoley
