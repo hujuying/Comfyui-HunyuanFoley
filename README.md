@@ -1,6 +1,14 @@
 # ComfyUI_HunyuanFoley
-ComfyUI wrapper for **Tencent HunyuanVideo-Foley**.  created by **[Ai study now](https://aistudynow.com/)**
+ComfyUI wrapper for **Tencent HunyuanVideo-Foley**.  
 
+Workflow: created by **[https://aistudynow.com/hunyuanvideo-foley-comfyui-workflow-turn-quiet-video-into-sound/](https://aistudynow.com/hunyuanvideo-foley-comfyui-workflow-turn-quiet-video-into-sound/)**
+
+
+## Tutorial Video
+
+## Tutorial Video
+
+[![ComfyUI HunyuanVideo-Foley Tutorial](https://img.youtube.com/vi/TpxkErTzawg/0.jpg)](https://www.youtube.com/watch?v=TpxkErTzawg)
 
 
 ---
@@ -18,4 +26,3 @@ ComfyUI/models/hunyuanFoley/HunyuanVideo-Foley/
 ├─ synchformer_state_dict.pth
 └─ config.yaml
 
-# ComfyUI_HunyuanFoley
