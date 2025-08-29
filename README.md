@@ -1,6 +1,5 @@
 # ComfyUI_HunyuanFoley
-
-MMAudio-style ComfyUI wrapper for **Tencent HunyuanVideo-Foley**.  
+ComfyUI wrapper for **Tencent HunyuanVideo-Foley**.  
 Pick MAIN / VAE / SYNCH files explicitly and type a `config.yaml` path.  
 Outputs audio shaped for either **VHS_VideoCombine** or **Save/PreviewAudio**.
 
