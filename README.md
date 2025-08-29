@@ -3,9 +3,6 @@ ComfyUI wrapper for **Tencent HunyuanVideo-Foley**.
 
 Workflow: created by **[https://aistudynow.com/hunyuanvideo-foley-comfyui-workflow-turn-quiet-video-into-sound/](https://aistudynow.com/hunyuanvideo-foley-comfyui-workflow-turn-quiet-video-into-sound/)**
 
-
-## Tutorial Video
-
 ## Tutorial Video
 
 [![ComfyUI HunyuanVideo-Foley Tutorial](https://img.youtube.com/vi/TpxkErTzawg/0.jpg)](https://www.youtube.com/watch?v=TpxkErTzawg)
