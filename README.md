@@ -1,6 +1,6 @@
 # ComfyUI_HunyuanFoley
 
-New Update: Now work on lowvram, also new workflow
+Update: Now work on lowvram, also new workflow
 New Workflow: created by **[https://aistudynow.com/hunyuanvideo-foley-comfyui-workflow-turn-quiet-video-into-sound/](https://aistudynow.com/hunyuanvideo-foley-comfyui-workflow-turn-quiet-video-into-sound/)**
 
 ComfyUI wrapper for **Tencent HunyuanVideo-Foley**.  
@@ -22,4 +22,5 @@ ComfyUI/models/hunyuanfoley/
 └─ config.yaml
 
 # ComfyUI_HunyuanFoley
+
 
