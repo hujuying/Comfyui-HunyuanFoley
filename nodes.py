@@ -1,4 +1,5 @@
-import os, sys, tempfile
+import os
+import tempfile
 from typing import Optional
 
 import torch
@@ -8,13 +9,13 @@ import imageio
 import folder_paths
 import comfy.model_management as mm
 
-sys.path.insert(0, os.path.dirname(__file__))
-
+from .utils import ensure_in_path
+ensure_in_path()
 
 from hunyuanvideo_foley.utils.model_utils import load_model, denoise_process
 from hunyuanvideo_foley.utils.feature_utils import feature_process
 
--------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
 _models_root = folder_paths.models_dir
 _primary_key = "hunyuanFoley"
 _alt_key     = "hunyuanfoley"
@@ -311,4 +312,3 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "HunyuanFoleyUtilsLoader": "Hunyuan Foley - Model Loader",
     "HunyuanFoleySampler":     "Hunyuan Foley - Sampler",
 }
-
