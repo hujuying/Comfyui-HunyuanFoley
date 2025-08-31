@@ -5,10 +5,11 @@ version = "1.0.5"
 license = {file = "LICENSE"}
 
 [project.urls]
-Repository = "https://github.com/phazei/ComfyUI-HunyuanVideo-Foley"
+Repository = "https://github.com/aistudynow/Comfyui-HunyuanFoley"
 #  Used by Comfy Registry https://comfyregistry.org
 
 [tool.comfy]
 PublisherId = "aistudynow"
 DisplayName = "ComfyUI-HunyuanVideo-Foley"
+
 Icon = ""
