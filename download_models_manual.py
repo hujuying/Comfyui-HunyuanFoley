@@ -1,4 +1,7 @@
-`ComfyUI/models/foley` directory. Files are fetched from the official
+"""Utility to manually download HunyuanVideo-Foley model files.
+
+Run this script directly to place the required model weights in the
+`ComfyUI/models/hunyuanfoley` directory. Files are fetched from the official
 HuggingFace repository using simple HTTP requests.
 """
 import os
@@ -40,7 +43,7 @@ def download_all(model_dir: str) -> List[pathlib.Path]:
 if __name__ == "__main__":
     # Determine default model directory relative to ComfyUI
     from folder_paths import models_dir
-    dest_dir = os.path.join(models_dir, "foley")
+    dest_dir = os.path.join(models_dir, "hunyuanfoley")
     paths = download_all(dest_dir)
     for p in paths:
         print(f"Downloaded: {p}")
