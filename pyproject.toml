@@ -1,5 +1,5 @@
 [project]
-name = "ComfyUI-HunyuanVideo-Foley"
+name = "Comfyui-HunyuanFoley"
 description = "Generate Audio from any video and or text"
 version = "2.0.5"
 license = {file = "LICENSE"}
@@ -10,7 +10,8 @@ Repository = "https://github.com/aistudynow/Comfyui-HunyuanFoley"
 
 [tool.comfy]
 PublisherId = "aistudynow"
-DisplayName = "ComfyUI-HunyuanVideo-Foley"
+DisplayName = "Comfyui-HunyuanFoley"
 
 Icon = ""
+
 
