@@ -39,11 +39,6 @@ except ImportError as e:
     logger.error("Please ensure the ComfyUI_HunyuanVideoFoley custom node is installed correctly.")
     raise
 
-# -----------------------------------------------------------------------------------
-# HELPER FUNCTIONS - ADAPTED FOR COMFYUI WORKFLOW
-# These are modified versions of the original library's functions to make them
-# compatible with ComfyUI's data flow (e.g., accepting a torch.Generator).
-# -----------------------------------------------------------------------------------
 
 def _caps(model_dict):
     tokmax = int(getattr(getattr(model_dict, "clap_tokenizer", None), "model_max_length", 10**9) or 10**9)
@@ -90,7 +85,7 @@ def denoise_process_with_generator(visual_feats, text_feats, audio_len_in_s, mod
     text_feat_rep = text_feats['text_feat'].repeat(batch_size, 1, 1)
     uncond_text_rep = text_feats['uncond_text_feat'].repeat(batch_size, 1, 1)
 
-    # --- PAD EMBEDDINGS TOKENZIER ---
+  
 
     T_cur_len = int(text_feat_rep.shape[1])
     cap   = _caps(model_dict)
@@ -207,9 +202,7 @@ def feature_process_from_tensors(frames_8fps, frames_25fps, prompt, neg_prompt, 
 
     return visual_features, text_feats, audio_len_in_s
 
-# -----------------------------------------------------------------------------------
-# FP8 WEIGHT-ONLY QUANTIZATION HELPERS (storage in fp8, compute in fp16/bf16)
-# -----------------------------------------------------------------------------------
+
 class LinearFP8Wrapper(nn.Module):
     """Wraps a Linear layer with FP8 weight *storage* and safe upcast at forward time.
     - Weight is stored as float8 (e4m3fn/e5m2) to save VRAM.
@@ -280,9 +273,6 @@ def _quantize_linears_to_fp8_inplace(module: nn.Module, quantization: str = "fp8
     _replace(module)
     return count, saved_bytes
 
-# -----------------------------------------------------------------------------------
-# DTYPE / QUANT DETECTION HELPERS
-# -----------------------------------------------------------------------------------
 
 def _detect_ckpt_fp8(state_dict):
     """Return 'fp8_e5m2' / 'fp8_e4m3fn' if any tensor in the checkpoint uses that dtype; else None."""
@@ -309,9 +299,7 @@ def _detect_ckpt_major_precision(state_dict):
         return torch.bfloat16
     return max(counts, key=counts.get)
 
-# -----------------------------------------------------------------------------------
-# NODE 1: Hunyuan Model Loader
-# -----------------------------------------------------------------------------------
+
 class HunyuanModelLoader:
     @classmethod
     def INPUT_TYPES(cls):
@@ -369,9 +357,7 @@ class HunyuanModelLoader:
         logger.info(f"Loaded HunyuanVideoFoley main model: {model_name}")
         return (foley_model,)
 
-# -----------------------------------------------------------------------------------
-# NODE 2: Hunyuan Dependencies Loader
-# -----------------------------------------------------------------------------------
+
 class HunyuanDependenciesLoader:
     @classmethod
     def INPUT_TYPES(cls):
@@ -419,9 +405,7 @@ class HunyuanDependenciesLoader:
         logger.info("Loaded all HunyuanVideoFoley dependencies.")
         return (AttributeDict(deps),)
 
-# -----------------------------------------------------------------------------------
-# NODE 3: Hunyuan Foley Sampler
-# -----------------------------------------------------------------------------------
+
 class HunyuanFoleySampler:
     SAMPLER_NAMES = ["euler", "heun-2", "midpoint-2", "kutta-4"]
 
@@ -556,9 +540,7 @@ class HunyuanFoleySampler:
 
         return (audio_output_first,)
     
-# -----------------------------------------------------------------------------------
-# NODE: Hunyuan Foley Torch Compile (optional accelerator)
-# -----------------------------------------------------------------------------------
+
 class HunyuanFoleyTorchCompile:
     """Torch Compile.
     
@@ -663,9 +645,7 @@ class HunyuanFoleyTorchCompile:
 
         return (compiled,)
 
-# -----------------------------------------------------------------------------------
-# HELPER NODE: Select Audio From Batch
-# -----------------------------------------------------------------------------------
+
 class SelectAudioFromBatch:
     @classmethod
     def INPUT_TYPES(cls):
@@ -695,9 +675,7 @@ class SelectAudioFromBatch:
         audio_output = {"waveform": selected_waveform, "sample_rate": sample_rate}
         return (audio_output,)
 
-# -----------------------------------------------------------------------------------
-# NODE MAPPINGS - This is how ComfyUI discovers the nodes.
-# -----------------------------------------------------------------------------------
+
 NODE_CLASS_MAPPINGS = {
     "HunyuanModelLoader": HunyuanModelLoader,
     "HunyuanDependenciesLoader": HunyuanDependenciesLoader,
@@ -711,4 +689,5 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "HunyuanFoleySampler": "Hunyuan-Foley Sampler",
     "HunyuanFoleyTorchCompile": "Hunyuan-Foley Torch Compile",
     "SelectAudioFromBatch": "Select Audio From Batch",
+
 }
