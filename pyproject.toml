@@ -12,7 +12,8 @@ Repository = "https://github.com/aistudynow/Comfyui-HunyuanFoley"
 PublisherId = "aistudynow"
 DisplayName = "Comfyui-HunyuanFoley"
 
-Icon = ""
+Icon = "icon.png"
+
 
 
 
