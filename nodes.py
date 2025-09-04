@@ -303,7 +303,8 @@ def _detect_ckpt_major_precision(state_dict):
 class HunyuanModelLoader:
     @classmethod
     def INPUT_TYPES(cls):
-        return {"required": {"model_name": (folder_paths.get_filename_list("hunyuanfoley"),), "precision": (["auto", "bf16", "fp16", "fp32"], {"default": "bf16", "tooltip": "Compute dtype for non-quantized params and autocast (auto = detect from checkpoint)"}), "quantization": (["none", "fp8_e4m3fn"
+        return {"required": {"model_name": (folder_paths.get_filename_list("hunyuanfoley"),), "precision": (["auto", "bf16", "fp16", "fp32"], {"default": "bf16", "tooltip": "Compute dtype for non-quantized params and autocast (auto = detect from checkpoint)"}), "quantization": (["none", "fp8_e4m3fn", "fp8_e5m2", "auto"], {"default": "none"})}}
+    
     RETURN_TYPES = ("HUNYUAN_MODEL",)
     FUNCTION = "load_model"
     CATEGORY = "audio/HunyuanFoley"
